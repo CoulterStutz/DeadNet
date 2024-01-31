@@ -17,3 +17,7 @@ def start_server():
 
         client_handler = threading.Thread(target=handle_client, args=(client,))
         client_handler.start()
+
+
+if __name__ == "__main__":
+    start_server()
