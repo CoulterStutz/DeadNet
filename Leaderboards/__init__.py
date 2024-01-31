@@ -15,4 +15,8 @@ class Leaderboard():
 
 
     def retrieve_leaderboard_mph(self):
-        None
+        cursor = self.db.cursor()
+        cursor.execute("SELECT * FROM Leaderboard ORDER BY TopSpeed DESC")
+        rows = cursor.fetchall()
+        return rows
+    
