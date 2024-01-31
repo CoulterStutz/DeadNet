@@ -3,7 +3,17 @@ import API, Clients, Parser, Leaderboards
 from termcolor import colored
 
 def handle_client(client):
-    None
+    while True:
+        try:
+            d = client.recv(1024)
+            if not d:
+                break
+
+            data = d.decode('utf-8')
+
+        except Exception as E:
+            print("Error Handling Client!")
+            break
 
 def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
