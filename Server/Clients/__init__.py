@@ -10,11 +10,14 @@ class Client():
         self.role = role
 
 
-def ClientAuthenticator(decodedData):
-    with open("clients.json", 'r') as j:
-        c = j.read()
-        clients = eval(c)
+def client_authenticator(decoded_data):
+  with open("clients.json", 'r') as json_file:
+    clients = json.load(json_file)
+    for client in clients.values():
+      if client["VIN"] == decoded_data.split("::")[0] and client["SecretPassword"] == decoded_data.split("::")[1]:
+        return True
+  return False
 
-
-if __name__ == "__main__":
-    ClientAuthenticator("1")
+if __name__ == "__main__":  # Debug to test authenticator
+    b = client_authenticator("1::ExamplePassword")
+    print(b)

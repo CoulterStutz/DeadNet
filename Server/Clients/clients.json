@@ -1,5 +1,6 @@
 {
   "ExampleDriver": {
-    "VIN": 1
+    "VIN": "1",
+    "SecretPassword": "ExamplePassword"
   }
 }
