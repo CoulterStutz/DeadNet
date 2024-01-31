@@ -6,3 +6,6 @@ class Client():
     self.vim = vimIdentifier
     self.hasRadarDetector = hasRadarDetector
     self.role = role
+
+def ClientAuthenticator(decodedData):
+  if
