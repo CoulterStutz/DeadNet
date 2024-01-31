@@ -3,6 +3,15 @@ import API, Clients, Parser, Leaderboards
 from termcolor import colored
 
 def handle_client(client):
+
+    auth_vin = client.recv(1024)
+    dec_auth = auth_vin.decode('utf-8')
+
+    if Clients.client_authenticator(dec_auth):
+        None
+    else:
+        client.close()
+
     while True:
         try:
             d = client.recv(1024)
