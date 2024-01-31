@@ -1,3 +1,6 @@
+# Program Name: Server.py
+# Program Purpose: To host a server for the clients to connect to
+
 import threading, socket
 import API, Clients, Parser, Leaderboards
 from termcolor import colored
