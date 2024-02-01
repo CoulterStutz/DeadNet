@@ -28,7 +28,7 @@ def handle_client(client):
             data = d.decode('utf-8')
             client_speed = data[0]
             client_rpm = data[1]
-            client_message = Transcribe.transcribe_message()
+            client_voice_data = [2]
 
         except Exception as E:
             print("Error Handling Client!")
