@@ -5,7 +5,9 @@ class Connection:
         self.ip_address = ip_address
         self.port = port
         self.sock = socket.socket(socket.AF_INET)
+        self.transmission_message = {1:None,2:None,3:None}
 
-    def instate_connection(self):
+    def establish_connection(self):
         self.sock.connect((self.ip_address, self.port))
-        self.sock.send("1::ExamplePassword") # Authentication
+        auth_message = "1::ExamplePassword".encode('utf-8')  # Authentication message should be encoded
+        self.sock.send(auth_message)
