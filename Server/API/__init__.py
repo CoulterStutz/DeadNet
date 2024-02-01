@@ -11,7 +11,7 @@ class AWSTranscribe:
         """
         self.transcribe_client = boto3.client("transcribe", region_name="us-west-2")
         self.s3_client = boto3.client("s3", region_name="us-west-2")
-        self.bucket_name = "your-s3-bucket-name"  # Replace with your actual S3 bucket name
+        self.bucket_name = "deadnet"  # Replace with your actual S3 bucket name
 
     def transcribe_message(self, sender_client, file_path):
         """
