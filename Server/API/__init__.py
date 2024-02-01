@@ -1,12 +1,29 @@
+# Import necessary module
 import boto3
 
 class AWSTranscribe:
     def __init__(self):
+        """
+        Initialize the AWSTranscribe class with AWS Transcribe and S3 clients.
+
+        Parameters:
+        None
+        """
         self.transcribe_client = boto3.client("transcribe", region_name="us-west-2")
         self.s3_client = boto3.client("s3", region_name="us-west-2")
         self.bucket_name = "your-s3-bucket-name"  # Replace with your actual S3 bucket name
 
     def transcribe_message(self, sender_client, file_path):
+        """
+        Transcribe an audio file stored in an S3 bucket.
+
+        Parameters:
+        - sender_client (str): Sender client identifier.
+        - file_path (str): Path to the audio file.
+
+        Returns:
+        - str: Transcribed text.
+        """
         # Upload the file to S3
         object_key = f"{sender_client}/{file_path}"  # Customize the object key as needed
         self.s3_client.upload_file(file_path, self.bucket_name, object_key)
