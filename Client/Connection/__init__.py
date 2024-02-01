@@ -14,6 +14,7 @@ class Connection:
         self.ip_address = ip_address
         self.port = port
         self.sock = socket.socket(socket.AF_INET)
+        self.message = {}
 
     def establish_connection(self):
         """
@@ -32,7 +33,7 @@ class Connection:
         # Enter data sending and receiving loop
         while True:
             # Your code to send data
-            data_to_send = input("Enter data to send: ")
+            data_to_send = str(self.message)
             self.sock.send(data_to_send.encode('utf-8'))
 
             # Your code to receive data
