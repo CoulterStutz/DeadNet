@@ -8,3 +8,4 @@ class Connection:
 
     def instate_connection(self):
         self.sock.connect((self.ip_address, self.port))
+        self.sock.send("1::ExamplePassword") # Authentication
