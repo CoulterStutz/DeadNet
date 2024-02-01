@@ -5,13 +5,17 @@ import threading, socket
 import API, Clients, Parser, Leaderboards
 from termcolor import colored
 
+Transcribe = API.AWSTranscribe()
+connected_clients = []
+
 def handle_client(client):
 
     auth_vin = client.recv(1024)
     dec_auth = auth_vin.decode('utf-8')
+    isAuthed, client_name, role = Clients.client_authenticator(dec_auth)
 
-    if Clients.client_authenticator(dec_auth):
-        None
+    if isAuthed:
+        c = Clients.Client(client_name, role)
     else:
         client.close()
 
@@ -22,6 +26,9 @@ def handle_client(client):
                 break
 
             data = d.decode('utf-8')
+            client_speed = data[0]
+            client_rpm = data[1]
+            client_message = Transcribe.transcribe_message()
 
         except Exception as E:
             print("Error Handling Client!")
