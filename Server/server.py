@@ -1,6 +1,6 @@
 # Program Name: Server.py
 # Program Purpose: To host a server for the clients to connect to
-
+import os
 import threading
 import socket
 from pydub import AudioSegment
@@ -50,9 +50,10 @@ def handle_client(client):
             mp3_data = encode_raw_mp3(client_voice_data)
             with open(f"temp/encoding-{client_name}.mp3", "w+") as f:
                 f.write(mp3_data)
-
-            f.close()
-            Transcribe.transcribe_message(client_name, f"temp/encoding-{client_name}.mp3")
+                f.close()
+            TranscribeMessage = Transcribe.transcribe_message(client_name, f"temp/encoding-{client_name}.mp3")
+            os.remove(f"temp/encoding-{client_name}.mp3")
+            ParsedMessage = Parser.parse_transcribe_output(TranscribeMessage)
 
         except Exception as E:
             print("Error Handling Client!")
