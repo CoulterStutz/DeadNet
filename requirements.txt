@@ -1,0 +1,7 @@
+threading
+sockets
+termcolor
+pydub
+io
+boto3
+sqlite3
