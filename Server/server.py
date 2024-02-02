@@ -2,10 +2,16 @@ import socket
 import os
 from termcolor import colored
 
-
+authenticated_clients = {}
 def handle_client(sock):
     authCode = sock.recv(1024).decode("utf-8")
     vin, pw = authCode.split("::")
+    with open("auth.json", "r") as json:
+        clients = json.load(json)
+        for client in clients.values():
+            if client["VIN"] == vin and client["SecretPassword"] == pw:
+                authenticated_clients[client] = sock
+
 
 
 def main(address, port):
