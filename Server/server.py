@@ -4,7 +4,8 @@ from termcolor import colored
 
 
 def handle_client(sock):
-    authCode = sock.recv(1024)
+    authCode = sock.recv(1024).decode("utf-8")
+    vin, pw = authCode.split("::")
 
 
 def main(address, port):
