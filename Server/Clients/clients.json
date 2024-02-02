@@ -1,7 +1,0 @@
-{
-  "ExampleDriver": {
-    "VIN": "1",
-    "SecretPassword": "ExamplePassword",
-    "Role": "Driver"
-  }
-}
