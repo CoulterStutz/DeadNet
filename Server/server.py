@@ -1,8 +1,11 @@
 import socket
 import os
 from termcolor import colored
+
+
 def handle_client(sock):
     authCode = sock.recv(1024)
+
 
 def main(address, port):
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -18,6 +21,7 @@ def main(address, port):
         # Start a new thread to handle the client
         client_handler = threading.Thread(target=handle_client, args=(client,))
         client_handler.start()
+
 
 if __name__ == "__main__":
     main()
